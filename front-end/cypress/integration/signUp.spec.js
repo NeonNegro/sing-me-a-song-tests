@@ -25,6 +25,10 @@ describe("Add a recommendation", () =>{
         
         cy.get('article').contains(recommendation.name);
     });
+
+    after(() =>{
+        cy.deleteAll();
+    });
 })
 
 describe("Rate a recommendation", ()=> {
@@ -32,10 +36,12 @@ describe("Rate a recommendation", ()=> {
         cy.deleteAll();
     });
 
-    it("Should add 1 to the note when pressing the up arrow", ()=>{
+    it("Should add 1 to the note when pressing the up arrow", ()=> {
+        cy.createRecommendation();
 
-        cy.get('article').first().find('svg').click();
+        cy.get('article div:last svg:first').click();
+        cy.get('article div:last svg:first').click();
+        
+        cy.get('article').first().find('svg').first().parent().contains('1');
     })
-
-
 });

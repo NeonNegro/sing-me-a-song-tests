@@ -3,7 +3,7 @@ import { Recommendation } from '@prisma/client';
 import { recommendationRepository } from '../../src/repositories/recommendationRepository';
 import { CreateRecommendationData, recommendationService } from '../../src/services/recommendationsService';
 
-describe("Recommendation Service Unit Test", ()=>{
+describe("Recommendation Service Unit Test", () =>{
     it("should thrown a conflict error given a duplicate recommendation", async () =>{
 
         const recommendation: Recommendation = {
@@ -20,4 +20,5 @@ describe("Recommendation Service Unit Test", ()=>{
         expect(recommendationService.insert(recommendation)).rejects.toThrowError('Recommendations names must be unique');
 
     });
+
 });

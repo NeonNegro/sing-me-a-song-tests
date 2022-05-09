@@ -1,25 +1,12 @@
-
-
-
-
-
-
-
 Cypress.Commands.add('deleteAll', ()=>{
-    cy.request("POST", "http://localhost:5000/tests/deletAll");
+    cy.request("POST", "http://localhost:5000/tests/deleteAll");
 })
-
 
 Cypress.Commands.add("createRecommendation", () => {
 	cy.request("POST", "http://localhost:5000/tests/createRecommendation");
 });
 
 // cypress/integration/fooBar.spec.js
-
-beforeEach(() => {
-	cy.resetDatabase();
-});
-
 
 
 

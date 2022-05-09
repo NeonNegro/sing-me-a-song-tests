@@ -3,7 +3,8 @@ import { testController } from "../controllers/testController.js";
 
 const testRouter = Router();
 
-testRouter.post("/tests/deleteAll", testController.deleteAll);
+testRouter.post("/deleteAll", testController.deleteAll);
+testRouter.post("/createRecommendation", testController.createRecommendation);
 // testRouter.get("/", testsController.get);
 // testRouter.get("/random", testsController.random);
 // testRouter.get("/top/:amount", testsController.getTop);
