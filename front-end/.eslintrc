@@ -1,0 +1,8 @@
+{
+    "plugins": ["cypress"],
+    "extends": ["plugin:cypress/recommended"],
+    "parser": "babel-eslint",
+    "rules": {
+      "jest/expect-expect": "off"
+    }
+}
