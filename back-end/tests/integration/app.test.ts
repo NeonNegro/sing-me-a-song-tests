@@ -4,6 +4,15 @@ import { prisma } from "../../src/database";
 import { CreateRecommendationData } from "../../src/services/recommendationsService"
 
 describe("Integration Tests", () =>{
+    beforeEach(()=>{
+        
+    })
+
+
+    afterAll(()=>{
+        prisma.$disconnect;
+    })
+
     describe("POST /", ()=>{
         it("should persist a recommendation  given a valid body", async () =>{
             const recommendation: CreateRecommendationData = {

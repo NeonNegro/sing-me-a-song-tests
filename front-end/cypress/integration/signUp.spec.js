@@ -14,7 +14,6 @@ describe("Add a recommendation", () =>{
         
         cy.visit("http://localhost:3000/");
         
-        //cy.intercept("POST", 'http://localhost:5000/recommendations').as('addRecommendation');
         cy.intercept("GET", 'http://localhost:5000/recommendations').as('listRecommendation');
         
         cy.get('[placeholder="Name"]').type(recommendation.name);
@@ -34,14 +33,23 @@ describe("Add a recommendation", () =>{
 describe("Rate a recommendation", ()=> {
     beforeEach(()=>{
         cy.deleteAll();
+        cy.createRecommendation();
     });
 
     it("Should add 1 to the note when pressing the up arrow", ()=> {
-        cy.createRecommendation();
-
-        cy.get('article div:last svg:first').click();
-        cy.get('article div:last svg:first').click();
-        
+        cy.get('article div:last svg').first().click();
         cy.get('article').first().find('svg').first().parent().contains('1');
-    })
+    });
+
+    it("Should subtract 1 to the note when pressing the down arrow", ()=> {
+        cy.get('article div:last svg').last().click();
+        cy.get('article').first().find('svg').first().parent().contains('-1');
+    });
+
+    it("Should delete a recommendation when the rating reacts '-6'", ()=> {
+        Cypress._.times(6, ()=>{
+            cy.get('article div:last svg').last().click();  
+        }); 
+        cy.get('article').should('not.exist');
+    });
 });

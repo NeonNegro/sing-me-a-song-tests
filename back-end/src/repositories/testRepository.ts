@@ -2,7 +2,7 @@ import { prisma } from "../database.js";
 import { CreateRecommendationData } from "../services/recommendationsService.js";
 
 async function deleteAll() {
-  await prisma.recommendation.deleteMany({});
+  await prisma.$executeRaw`TRUNCATE TABLE recommendations RESTART IDENTITY CASCADE`;
 }
 
 async function insertRecommendation(createRecommendationData: CreateRecommendationData) {

@@ -6,6 +6,7 @@ Cypress.Commands.add("createRecommendation", () => {
 	cy.request("POST", "http://localhost:5000/tests/createRecommendation");
 });
 
+
 // cypress/integration/fooBar.spec.js
 
 
